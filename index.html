@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chinthan K M | Manga Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Comic-style Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #f5f5f5;
+      --bg-panel: #ffffff;
+      --bg-panel-alt: #fbfbfb;
+      --ink: #111111;
+      --accent: #000000;
+      --accent-muted: #444444;
+      --shadow: 4px 4px 0 #000;
+      --border-thick: 3px solid #000;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Nunito', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top left, #ffffff 0, #f0f0f0 35%, #e5e5e5 100%);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .container {
+      width: 95%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #fff;
+      border-bottom: var(--border-thick);
+      box-shadow: 0 4px 0 #000;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+
+    .logo {
+      font-family: 'Bangers', system-ui;
+      font-size: 1.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      letter-spacing: 0.04em;
+    }
+
+    .logo-badge {
+      border-radius: 999px;
+      border: 2px solid #000;
+      padding: 0.1rem 0.55rem;
+      font-size: 0.9rem;
+      transform: rotate(-5deg);
+      background: #000;
+      color: #fff;
+    }
+
+    .logo span:last-child {
+      transform: rotate(-2deg);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #000;
+      transition: width 0.2s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      border-radius: 999px;
+      border: 2px solid #000;
+      padding: 0.25rem 0.8rem;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      box-shadow: 3px 3px 0 #000;
+      background: #fff;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 2.2rem 0 1.8rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.7fr);
+      gap: 1.5rem;
+    }
+
+    .panel {
+      background: var(--bg-panel);
+      border: var(--border-thick);
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::before {
+      /* halftone dots */
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background-image: radial-gradient(#000 1px, transparent 1px);
+      background-size: 5px 5px;
+      opacity: 0.06;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
+    .panel-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 800;
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 2px solid #000;
+      background: #fff;
+      margin-bottom: 0.7rem;
+    }
+    .hero-title {
+  font-family: 'Bangers', sans-serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 0 #000;
+  color: #000;
+}
+
+.hero-tagline {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 700;
+  color: #222;
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+}
+
+    .hero-highlight {
+      display: inline-block;
+      background: #fff;
+      padding: 0.1rem 0.5rem;
+      border-radius: 6px;
+      border: 2px solid #000;
+      transform: rotate(-1deg);
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      max-width: 32rem;
+      margin-top: 0.8rem;
+    }
+
+    .hero-tags {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      border-radius: 999px;
+      border: 2px solid #000;
+      padding: 0.15rem 0.7rem;
+      font-size: 0.75rem;
+      font-weight: 800;
+      background: var(--bg-panel-alt);
+      text-transform: uppercase;
+    }
+
+    .hero-buttons {
+      margin-top: 1.3rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      border-radius: 999px;
+      border: 3px solid #000;
+      padding: 0.45rem 1.2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      cursor: pointer;
+      background: #fff;
+      box-shadow: 4px 4px 0 #000;
+      transition: transform 0.1s ease-out, box-shadow 0.1s ease-out, background 0.1s ease-out, color 0.1s ease-out;
+    }
+
+    .btn-primary {
+      background: #000;
+      color: #fff;
+    }
+
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 #000;
+    }
+
+    .btn:active {
+      transform: translate(0, 0);
+      box-shadow: 2px 2px 0 #000;
+    }
+
+    .hero-note {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--accent-muted);
+    }
+
+    /* HERO RIGHT PANEL */
+    .hero-avatar-panel {
+      background: var(--bg-panel-alt);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: space-between;
+    }
+
+.avatar-circle {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+}
+
+.avatar-img {
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+}
+
+
+    .avatar-placeholder {
+      position: absolute;
+      inset: 18px;
+      border-radius: 50%;
+      border: 3px dashed #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .avatar-placeholder span:first-child {
+      font-size: 2.2rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .avatar-label {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-5deg);
+      font-family: 'Bangers', system-ui;
+      font-size: 0.85rem;
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.15rem 0.7rem;
+      border: 2px solid #000;
+    }
+
+    .speech-bubble {
+      position: relative;
+      border-radius: 12px;
+      border: 3px solid #000;
+      padding: 0.7rem 0.9rem;
+      background: #fff;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+
+    .speech-bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -18px;
+      left: 22%;
+      border-width: 10px 10px 0 10px;
+      border-style: solid;
+      border-color: #fff transparent transparent transparent;
+      filter: drop-shadow(0 3px 0 #000);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .hero-meta-item {
+      flex: 1;
+      border-radius: 10px;
+      border: 2px solid #000;
+      padding: 0.4rem 0.5rem;
+      background: #fff;
+      display: grid;
+      gap: 0.1rem;
+      font-weight: 700;
+    }
+
+    .hero-meta-item span:last-child {
+      font-size: 0.8rem;
+      font-weight: 900;
+    }
+
+    /* SECTION GENERIC */
+    section {
+      padding: 1.8rem 0;
+    }
+
+    .section-title {
+      font-family: 'Bangers', system-ui;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      border-radius: 999px;
+      border: 2px solid #000;
+      padding: 0.1rem 0.6rem;
+      background: #fff;
+      letter-spacing: 0.08em;
+    }
+
+    .panel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    /* ABOUT */
+    .about-text {
+      font-size: 0.92rem;
+    }
+
+    .about-text p + p {
+      margin-top: 0.6rem;
+    }
+
+    .subheading {
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+    }
+
+    .timeline {
+      margin-top: 0.7rem;
+      font-size: 0.82rem;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 0.4rem;
+      align-items: flex-start;
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid #000;
+      background: #fff;
+      margin-top: 4px;
+    }
+
+    .timeline-label {
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.07em;
+    }
+
+    .timeline-desc {
+      font-size: 0.8rem;
+    }
+
+    /* SKILLS */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+    }
+
+    .skill-pill {
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 2px solid #000;
+      background: #fff;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .skill-group-title {
+      font-weight: 800;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.35rem;
+    }
+
+    /* PROJECTS */
+    .chapter-label {
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.2rem;
+    }
+
+    .project-title {
+      font-weight: 900;
+      font-size: 1rem;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .project-meta {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: var(--accent-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      font-size: 0.75rem;
+    }
+
+    .badge {
+      border-radius: 999px;
+      border: 2px solid #000;
+      padding: 0.1rem 0.6rem;
+      background: #fff;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 1rem;
+    }
+
+    .contact-list {
+      font-size: 0.9rem;
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .contact-item span:first-child {
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+    }
+
+    .contact-item span:last-child {
+      font-size: 0.88rem;
+    }
+
+    .contact-form label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.15rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      border-radius: 8px;
+      border: 2px solid #000;
+      padding: 0.45rem 0.5rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      background: #fff;
+      margin-bottom: 0.65rem;
+      outline: none;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      box-shadow: 0 0 0 2px #000;
+    }
+
+    .footer {
+      border-top: 3px solid #000;
+      padding: 0.9rem 0;
+      font-size: 0.8rem;
+      text-align: center;
+      background: #fff;
+      margin-top: 1.5rem;
+    }
+
+    .scroll-top {
+      position: fixed;
+      right: 1.2rem;
+      bottom: 1.2rem;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      border: 3px solid #000;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 4px 4px 0 #000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease-out, transform 0.1s ease-out, box-shadow 0.1s ease-out;
+      font-family: 'Bangers', system-ui;
+      font-size: 0.8rem;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .scroll-top:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 #000;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .panel-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        padding: 1.1rem;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .avatar-circle {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <div class="logo">
+        <span class="logo-badge">CK</span>
+        <span>Chinthan K M</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Chapters</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="nav-cta">Hire Me</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <!-- Left Panel -->
+        <article class="panel">
+          <div class="panel-inner">
+            <div class="hero-eyebrow">Data Engineering • Analytics • GenAI</div>
+            <h1 class="hero-title">Chinthan K M</h1>
+            <p class="hero-tagline">SQL • Data Engineering • Machine Learning • Analytics</p>
+
+            <p class="hero-sub">
+              I’m a data enthusiast with strong skills in <strong>Python, SQL, data engineering tools, and
+              visualization platforms</strong>, building solutions that clean, move, and transform data into
+              clear decisions. I enjoy mixing solid engineering with creative storytelling – in dashboards,
+              ML apps, and automation workflows.
+            </p>
+
+            <div class="hero-tags">
+              <span class="tag">Python</span>
+              <span class="tag">SQL</span>
+              <span class="tag">Data Engineering</span>
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Power BI</span>
+              <span class="tag">GenAI</span>
+            </div>
+
+            <div class="hero-buttons">
+              <button class="btn btn-primary" onclick="scrollToSection('projects')">
+                View Project Chapters
+              </button>
+              <button class="btn" onclick="scrollToSection('contact')">
+                Let’s Collaborate
+              </button>
+            </div>
+
+            <p class="hero-note">
+              Currently pursuing MCA @ PES University and open to Data Engineering / Data Analyst roles.
+            </p>
+          </div>
+        </article>
+
+        <!-- Right Panel -->
+        <article class="panel hero-avatar-panel">
+          <div>
+           <div class="avatar-circle">
+            <img src="me-manga.png" alt="Chinthan Manga Avatar" class="avatar-img">
+            <div class="avatar-label">MANGA MODE</div>
+            </div>
+          </div>
+
+          <div class="speech-bubble">
+            “Clean data, sharp queries, and scalable pipelines. That’s my fighting style.”
+          </div>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <span>Base</span>
+              <span>Bengaluru, India</span>
+            </div>
+            <div class="hero-meta-item">
+              <span>Current Arc</span>
+              <span>MCA @ PES University</span>
+            </div>
+            <div class="hero-meta-item">
+              <span>Focus</span>
+              <span>Data Eng & Analytics</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">
+          About Me
+          <span class="section-tag">Chapter 1</span>
+        </h2>
+
+        <div class="panel-grid">
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="subheading">Origin Story</div>
+              <div class="about-text">
+                <p>
+                  I’m <strong>Chinthan</strong>, a data-driven developer who loves working end-to-end—
+                  from <strong>databases and SQL</strong> to <strong>analytics dashboards and ML models</strong>.
+                  I enjoy taking messy, real-world data and shaping it into something clean, structured,
+                  and actually useful.
+                </p>
+                <p>
+                  My experience spans <strong>SQL development, data analysis, dashboard building,
+                  data quality engineering, and GenAI applications</strong>. I treat each project like
+                  a new manga chapter: clear goal, rising challenge, and a satisfying result.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="subheading">Timeline</div>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div>
+                    <span class="timeline-label">Nov 2024 – Aug 2026</span>
+                    <span class="timeline-desc">
+                      Master of Computer Applications (MCA), PES University, Bengaluru.
+                    </span>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div>
+                    <span class="timeline-label">Nov 2021 – Sep 2024</span>
+                    <span class="timeline-desc">
+                      Bachelor of Computer Applications (BCA), Government First Grade College, Thirthahalli.
+                    </span>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div>
+                    <span class="timeline-label">Sep 2025 – Nov 2025</span>
+                    <span class="timeline-desc">
+                      SQL Developer Intern @ Elevate Labs – worked on complex SQL, query optimization, and analytics.
+                    </span>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div>
+                    <span class="timeline-label">Nov 2024 – Mar 2025</span>
+                    <span class="timeline-desc">
+                      Data Analyst Intern @ NullClass – hands-on EDA, dashboards, and storytelling with data.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="subheading">Side Quests & Fun Facts</div>
+              <ul style="font-size:0.9rem; padding-left:1.1rem;">
+                <li>Experience as a Web Development Intern @ Internship Studio.</li>
+                <li>Started my journey as a Data Analyst Trainee @ Trainity.</li>
+                <li>Big fan of manga & anime; I love bringing that energy into tech and projects.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">
+          Skills
+          <span class="section-tag">Chapter 2</span>
+        </h2>
+
+        <div class="panel-grid">
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="skill-group-title">Programming & Query</div>
+              <div class="skills-list">
+                <span class="skill-pill">Python</span>
+                <span class="skill-pill">SQL</span>
+                <span class="skill-pill">Java</span>
+                <span class="skill-pill">C</span>
+                <span class="skill-pill">R</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="skill-group-title">Data & Databases</div>
+              <div class="skills-list">
+                <span class="skill-pill">MySQL</span>
+                <span class="skill-pill">MongoDB</span>
+                <span class="skill-pill">Data Modeling</span>
+                <span class="skill-pill">ETL</span>
+                <span class="skill-pill">Query Optimization</span>
+                <span class="skill-pill">CTEs</span>
+                <span class="skill-pill">Window Functions</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="skill-group-title">Analytics & Visualization</div>
+              <div class="skills-list">
+                <span class="skill-pill">Excel</span>
+                <span class="skill-pill">Power BI</span>
+                <span class="skill-pill">Tableau</span>
+                <span class="skill-pill">Streamlit</span>
+                <span class="skill-pill">Pandas</span>
+                <span class="skill-pill">NumPy</span>
+                <span class="skill-pill">Matplotlib</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="skill-group-title">Data Engineering & Big Data</div>
+              <div class="skills-list">
+                <span class="skill-pill">Airflow</span>
+                <span class="skill-pill">Spark</span>
+                <span class="skill-pill">Kafka</span>
+                <span class="skill-pill">Hadoop</span>
+                <span class="skill-pill">Data Pipelines</span>
+                <span class="skill-pill">Workflow Orchestration</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="skill-group-title">Machine Learning & AI</div>
+              <div class="skills-list">
+                <span class="skill-pill">Scikit-learn</span>
+                <span class="skill-pill">PySpark</span>
+                <span class="skill-pill">Computer Vision</span>
+                <span class="skill-pill">NLP</span>
+                <span class="skill-pill">Speech Recognition</span>
+                <span class="skill-pill">Anomaly Detection</span>
+                <span class="skill-pill">Feature Engineering</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="skill-group-title">Tools & Practices</div>
+              <div class="skills-list">
+                <span class="skill-pill">Git/GitHub</span>
+                <span class="skill-pill">VS Code</span>
+                <span class="skill-pill">Jupyter</span>
+                <span class="skill-pill">Dashboard Dev</span>
+                <span class="skill-pill">Data Cleaning</span>
+                <span class="skill-pill">EDA</span>
+                <span class="skill-pill">Data Quality</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">
+          Project and Experience Chapters
+          <span class="section-tag">Chapter 3</span>
+        </h2>
+
+        <div class="panel-grid">
+          <!-- SmartDQ -->
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="chapter-label">Chapter 3.1</div>
+              <h3 class="project-title">SmartDQ – AI Data Quality Framework</h3>
+              <div class="project-meta">Python • Streamlit • Spark • Kafka • Power BI</div>
+              <p class="project-desc">
+                Built an interactive framework that monitors and improves data quality in both
+                batch and streaming pipelines. Includes automated checks for completeness,
+                validity, uniqueness, timeliness, and anomaly detection, plus dashboards for
+                real-time alerts and EDA suggestions.
+              </p>
+              <div class="badge-row">
+                <span class="badge">Data Quality</span>
+                <span class="badge">Streaming</span>
+                <span class="badge">Analytics</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Currency Note Recognition -->
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="chapter-label">Chapter 3.2</div>
+              <h3 class="project-title">Currency Note Recognition & INR Converter</h3>
+              <div class="project-meta">ML • Computer Vision • Streamlit</div>
+              <p class="project-desc">
+                Developed a machine learning pipeline that recognizes currency notes from images
+                using computer vision techniques, then converts their value into INR. Includes
+                preprocessing and feature extraction to improve accuracy, all wrapped in a simple
+                web interface.
+              </p>
+              <div class="badge-row">
+                <span class="badge">Computer Vision</span>
+                <span class="badge">ML App</span>
+                <span class="badge">Python</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Jarves -->
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="chapter-label">Chapter 3.3</div>
+              <h3 class="project-title">Jarves – Desktop Voice Assistant</h3>
+              <div class="project-meta">Python • Speech Recognition • NLP</div>
+              <p class="project-desc">
+                Created a voice-controlled desktop assistant that can perform web searches,
+                open applications, set reminders, and fetch real-time information. Integrated
+                speech recognition and text-to-speech for smooth conversational interaction.
+              </p>
+              <div class="badge-row">
+                <span class="badge">Automation</span>
+                <span class="badge">NLP</span>
+                <span class="badge">Productivity</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- SQL Developer Internship -->
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="chapter-label">Chapter 3.4</div>
+              <h3 class="project-title">SQL Developer Intern @ Elevate Labs</h3>
+              <div class="project-meta">SQL • MySQL • Analytics</div>
+              <p class="project-desc">
+                Worked with real-world datasets to design and execute complex SQL queries using
+                CTEs, subqueries, and window functions. Optimized performance via indexing and
+                query plan analysis, built data-driven reports, and contributed to automated
+                analytics workflows for business teams.
+              </p>
+              <div class="badge-row">
+                <span class="badge">Query Optimization</span>
+                <span class="badge">Data Analysis</span>
+                <span class="badge">Reporting</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Data Analyst Internship -->
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="chapter-label">Chapter 3.5</div>
+              <h3 class="project-title">Data Analyst Intern @ NullClass</h3>
+              <div class="project-meta">EDA • Power BI • Excel</div>
+              <p class="project-desc">
+                Practiced end-to-end analytics: from data cleaning and feature engineering to
+                exploratory analysis and dashboard development. Used Power BI and Excel to
+                communicate insights from real datasets and support decision-making.
+              </p>
+              <div class="badge-row">
+                <span class="badge">EDA</span>
+                <span class="badge">Dashboards</span>
+                <span class="badge">Storytelling</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Next Chapter -->
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="chapter-label">Next Chapter</div>
+              <h3 class="project-title">Upcoming GenAI & Data Platform Builds</h3>
+              <div class="project-meta">Always Learning</div>
+              <p class="project-desc">
+                This space is reserved for new projects around GenAI apps, end-to-end data
+                platforms, and real-time analytics systems. I’m constantly experimenting and
+                adding fresh work here.
+              </p>
+              <div class="badge-row">
+                <span class="badge">GenAI</span>
+                <span class="badge">Data Platforms</span>
+                <span class="badge">In Progress</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">
+          Certifications & Highlights
+          <span class="section-tag">Chapter 4</span>
+        </h2>
+
+        <div class="panel-grid">
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="subheading">Cloud & GenAI</div>
+              <ul style="font-size:0.85rem; padding-left:1.1rem;">
+                <li>Google Cloud – Build Real World AI Applications with Gemini and Imagen (Skill Badge)</li>
+                <li>Google Cloud – Develop GenAI Apps with Gemini and Streamlit (Skill Badge)</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="subheading">Data Analytics</div>
+              <ul style="font-size:0.85rem; padding-left:1.1rem;">
+                <li>Accenture North America – Data Analytics and Visualization Job Simulation</li>
+                <li>Certificate of Participation – Zeta 2.0 (Excel-based simulation, Analytics Conclave’25)</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="subheading">Extra Milestones</div>
+              <ul style="font-size:0.85rem; padding-left:1.1rem;">
+                <li>BITATHON – Participation</li>
+                <li>Multiple internships across data, analytics, and web development.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">
+          Contact
+          <span class="section-tag">Final Chapter (For Now)</span>
+        </h2>
+
+        <div class="contact-grid">
+          <!-- Info -->
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="subheading">Let’s Talk Data</div>
+              <p style="font-size:0.9rem; margin-bottom:0.7rem;">
+                If you’re looking for someone who can work across <strong>SQL, data engineering,
+                analytics, and ML</strong> – and present it clearly – I’d be happy to connect.
+                Reach out for internships, full-time roles, or collaboration ideas.
+              </p>
+
+              <div class="contact-list">
+                <div class="contact-item">
+                  <span>Phone</span>
+                  <span>+91-8431092399</span>
+                </div>
+                <div class="contact-item">
+                  <span>Email</span>
+                  <span>chinthankm.work@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                  <span>Location</span>
+                  <span>Bengaluru, Karnataka, India</span>
+                </div>
+                <div class="contact-item">
+                  <span>LinkedIn</span>
+                  <span>
+                    <!-- Update this href if needed -->
+                    <a href="https://www.linkedin.com/in/chinthan-k-m-data-analyst" target="_blank" rel="noopener noreferrer">
+                      linkedin.com/in/chinthan-k-m-data-analyst
+                    </a>
+                  </span>
+                </div>
+                <div class="contact-item">
+                  <span>GitHub</span>
+                  <span>
+                    <!-- Replace with your actual GitHub profile if different -->
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                      github.com/chinthan59
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Form -->
+          <article class="panel">
+            <div class="panel-inner">
+              <div class="subheading">Send a Message</div>
+              <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                <label for="name">Name</label>
+                <input id="name" placeholder="Your name" required />
+
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="Your email" required />
+
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Tell me about the opportunity or idea..." required></textarea>
+
+                <button type="submit" class="btn btn-primary" style="width:100%;">
+                  Send Message
+                </button>
+
+                <p id="form-status" style="font-size:0.75rem; margin-top:0.4rem;"></p>
+              </form>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © <span id="year"></span> Chinthan • Classic Manga Portfolio
+    </div>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTopBtn">UP</button>
+
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        scrollBtn.classList.add("visible");
+      } else {
+        scrollBtn.classList.remove("visible");
+      }
+    });
+
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const status = document.getElementById("form-status");
+      status.textContent =
+        "Thanks for reaching out! This demo form can be wired to Formspree, SheetDB, or your backend.";
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
