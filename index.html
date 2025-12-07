@@ -295,7 +295,25 @@
   height: 50%;
   object-fit: cover;
 }
+@media (max-width: 640px) {
+  .panel-grid {
+    grid-template-columns: 1fr;
+  }
 
+  .panel {
+    padding: 1.1rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .avatar-circle {
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+  }
+}
 
     .avatar-placeholder {
       position: absolute;
@@ -691,7 +709,7 @@
             <p class="hero-tagline">SQL • Data Engineering • Machine Learning • Analytics</p>
 
             <p class="hero-sub">
-              I’m a data enthusiast with strong skills in <strong>Python, SQL, data engineering tools, and
+              I'm a data enthusiast with strong skills in <strong>Python, SQL, data engineering tools, and
               visualization platforms</strong>, building solutions that clean, move, and transform data into
               clear decisions. I enjoy mixing solid engineering with creative storytelling – in dashboards,
               ML apps, and automation workflows.
@@ -711,7 +729,7 @@
                 View Project Chapters
               </button>
               <button class="btn" onclick="scrollToSection('contact')">
-                Let’s Collaborate
+                Let's Collaborate
               </button>
             </div>
 
@@ -731,7 +749,7 @@
           </div>
 
           <div class="speech-bubble">
-            “Clean data, sharp queries, and scalable pipelines. That’s my fighting style.”
+            "Clean data, sharp queries, and scalable pipelines. That's my fighting style."
           </div>
 
           <div class="hero-meta">
@@ -766,7 +784,7 @@
               <div class="subheading">Origin Story</div>
               <div class="about-text">
                 <p>
-                  I’m <strong>Chinthan</strong>, a data-driven developer who loves working end-to-end—
+                  I'm <strong>Chinthan</strong>, a data-driven developer who loves working end-to-end—
                   from <strong>databases and SQL</strong> to <strong>analytics dashboards and ML models</strong>.
                   I enjoy taking messy, real-world data and shaping it into something clean, structured,
                   and actually useful.
@@ -1052,7 +1070,7 @@
               <div class="project-meta">Always Learning</div>
               <p class="project-desc">
                 This space is reserved for new projects around GenAI apps, end-to-end data
-                platforms, and real-time analytics systems. I’m constantly experimenting and
+                platforms, and real-time analytics systems. I'm constantly experimenting and
                 adding fresh work here.
               </p>
               <div class="badge-row">
@@ -1090,7 +1108,7 @@
               <div class="subheading">Data Analytics</div>
               <ul style="font-size:0.85rem; padding-left:1.1rem;">
                 <li>Accenture North America – Data Analytics and Visualization Job Simulation</li>
-                <li>Certificate of Participation – Zeta 2.0 (Excel-based simulation, Analytics Conclave’25)</li>
+                <li>Certificate of Participation – Zeta 2.0 (Excel-based simulation, Analytics Conclave'25)</li>
               </ul>
             </div>
           </article>
@@ -1120,10 +1138,10 @@
           <!-- Info -->
           <article class="panel">
             <div class="panel-inner">
-              <div class="subheading">Let’s Talk Data</div>
+              <div class="subheading">Let's Talk Data</div>
               <p style="font-size:0.9rem; margin-bottom:0.7rem;">
-                If you’re looking for someone who can work across <strong>SQL, data engineering,
-                analytics, and ML</strong> – and present it clearly – I’d be happy to connect.
+                If you're looking for someone who can work across <strong>SQL, data engineering,
+                analytics, and ML</strong> – and present it clearly – I'd be happy to connect.
                 Reach out for internships, full-time roles, or collaboration ideas.
               </p>
 
@@ -1143,7 +1161,6 @@
                 <div class="contact-item">
                   <span>LinkedIn</span>
                   <span>
-                    <!-- Update this href if needed -->
                     <a href="https://www.linkedin.com/in/chinthan-k-m-data-analyst" target="_blank" rel="noopener noreferrer">
                       linkedin.com/in/chinthan-k-m-data-analyst
                     </a>
@@ -1152,8 +1169,7 @@
                 <div class="contact-item">
                   <span>GitHub</span>
                   <span>
-                    <!-- Replace with your actual GitHub profile if different -->
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/chinthan59" target="_blank" rel="noopener noreferrer">
                       github.com/chinthan59
                     </a>
                   </span>
@@ -1166,15 +1182,15 @@
           <article class="panel">
             <div class="panel-inner">
               <div class="subheading">Send a Message</div>
-              <form class="contact-form" onsubmit="handleFormSubmit(event)">
+              <form id="contact-form" class="contact-form" onsubmit="handleFormSubmit(event)">
                 <label for="name">Name</label>
-                <input id="name" placeholder="Your name" required />
+                <input id="name" name="from_name" placeholder="Your name" required />
 
                 <label for="email">Email</label>
-                <input id="email" type="email" placeholder="Your email" required />
+                <input id="email" name="from_email" type="email" placeholder="Your email" required />
 
                 <label for="message">Message</label>
-                <textarea id="message" placeholder="Tell me about the opportunity or idea..." required></textarea>
+                <textarea id="message" name="message" placeholder="Tell me about the opportunity or idea..." required></textarea>
 
                 <button type="submit" class="btn btn-primary" style="width:100%;">
                   Send Message
@@ -1198,7 +1214,18 @@
   <!-- Scroll to Top -->
   <button class="scroll-top" id="scrollTopBtn">UP</button>
 
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
   <script>
+    // Initialize EmailJS with your public key
+    (function() {
+      // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
+      if (window.emailjs) {
+        emailjs.init('KU7CYyPkiQNqQBLHu');
+      }
+    })();
+
     function scrollToSection(id) {
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1217,11 +1244,37 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
+    // EmailJS-powered form submit
     function handleFormSubmit(e) {
       e.preventDefault();
+      const form = document.getElementById("contact-form");
       const status = document.getElementById("form-status");
-      status.textContent =
-        "Thanks for reaching out! This demo form can be wired to Formspree, SheetDB, or your backend.";
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      // UI feedback
+      submitBtn.disabled = true;
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = "Sending...";
+
+      // Replace these with your actual EmailJS credentials
+      const SERVICE_ID = 'service_78ucowh';
+      const TEMPLATE_ID = 'template_nfurb16';
+
+      // sendForm will pick up inputs by name attribute
+      emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form)
+        .then(function(response) {
+          status.style.color = "green";
+          status.textContent = "Message sent — thank you! I'll reply soon.";
+          form.reset();
+        }, function(error) {
+          status.style.color = "crimson";
+          status.textContent = "Failed to send message. Please try again or email directly.";
+          console.error('EmailJS error:', error);
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        });
     }
 
     document.getElementById("year").textContent = new Date().getFullYear();
